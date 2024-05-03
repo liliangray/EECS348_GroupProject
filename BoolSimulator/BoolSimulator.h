@@ -85,10 +85,19 @@ class BoolSimulator {
 
         // computes boolean operation given two operands and one operator 
         bool evalBooleanOperation (const char t1, const char t2, const char opt) {
-            if (!isBool(t1) || !isBool(t2)) { // handle unrecognized operands
-                std::cout << "<Error> Unrecognized operand." << std::endl; // print error msg
-                std::cout << "Goodbye...\n" << std::endl;
-                exit(0); // quit program
+            // handle unrecognized operands
+            if (opt == '!') { // if 'NOT'
+                if (!isBool(t2)) { // check t2
+                    std::cout << "<Error> Unrecognized operand." << std::endl; // print error msg
+                    std::cout << "Goodbye...\n" << std::endl;
+                    exit(0); // quit program
+                }
+            } else { // all other operators
+                if (!isBool(t1)) { // check t1
+                    std::cout << "<Error> Unrecognized operand." << std::endl; // print error msg
+                    std::cout << "Goodbye...\n" << std::endl;
+                    exit(0); // quit program
+                }
             }
         
             bool o1 = ((t1 == 'T') || (t1 == 't') ? 1 : 0); // convert first token to bool
