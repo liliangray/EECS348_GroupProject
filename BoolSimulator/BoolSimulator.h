@@ -105,7 +105,7 @@ class BoolSimulator {
                 case('$'):
                     return o1 ^ o2; // XOR
                 case('@'):
-                    return (o1 == 0 && o2 == 0) ? 1 : 0; // NAND
+                    return (o1 == 0 && o2 == 0) ? 1 : (o1 == 1 && o2 == 1) ? 0 : 1; // NAND
                 default:
                     // handle unrecognized operators
                     std::cout << "<Error> Unrecognized operator: " << opt << std::endl; // print error msg
